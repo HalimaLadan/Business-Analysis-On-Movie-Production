@@ -1,4 +1,6 @@
 # Business Analysis on Movie Production
+![movie theatre banner](https://user-images.githubusercontent.com/95732821/175164895-ef198e07-a34c-4f8f-808a-ad6f72bb4e1a.png)
+
 "C:\Users\heill\Downloads\movie theatre banner.png"
 A client has requested the production of a MySQL database on movies. A hypothesis testing is to be performed on the Movies Database to give mathematically-supported answers to questions about what makes a successful movie. Then finally and a Linear regression model that can predict the success of movies based on relevant features is to be built. The data for this project, is to be extracted from IMDB and TMDB open source website.
 >- ## Phase One: IMDB Files ETL (Extract, Transform and Load)
