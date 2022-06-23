@@ -1,18 +1,18 @@
 # Business Analysis on Movie Production
 ![movie theatre banner](https://user-images.githubusercontent.com/95732821/175164895-ef198e07-a34c-4f8f-808a-ad6f72bb4e1a.png)
 
-"C:\Users\heill\Downloads\movie theatre banner.png"
-A client has requested the production of a MySQL database on movies. A hypothesis testing is to be performed on the Movies Database to give mathematically-supported answers to questions about what makes a successful movie. Then finally and a Linear regression model that can predict the success of movies based on relevant features is to be built. The data for this project, is to be extracted from IMDB and TMDB open source website.
->- ## Phase One: IMDB Files ETL (Extract, Transform and Load)
- 
+#### OVERVIEW
+A client has requested the production of a MySQL database on movies. A hypothesis testing is to be performed on the Movies Database to give mathematically-supported answers to questions about what makes a successful movie. Then finally, the success of these movies, based on relevant features, is to be predicted using a Linear regression model. The data for this project, is to be extracted from IMDB and TMDB open source website.
+
+>- ## Phase One: IMDB Files ETL (Extract, Transform and Load) 
+>
 #### OBJECTIVES:
 
-A client has requested the production of a MySQL database on movies. The dataset is to be extracted from a subset of IMDB's publicly available dataset. The client specified the folllowing files for the database production:
+The first set of files for the movies database is to be extracted from a subset of IMDB's publicly available dataset. The client specified the folllowing files for the database production:
 
 title.basics.tsv.gz
 title.ratings.tsv.gz
 title.akas.tsv.gz
-An indepth analysis is to be performed on the dataset and the factors that makes a movie successfull is to be recommended.
 
 Data Source
 The dataset were obtained from the IMDB website.
@@ -23,8 +23,8 @@ Data download link: https://datasets.imdbws.com/
 
 
 #### RESULTS:
+The files were extracted and filtered, to contain only the relevant features and enteries. The files were then converted from the initial .tsv.gz format to a csv.gz format. 
 
-Movie-Production-Business-Analysis repository
 title_basics.csv.gz
 title_akas.csv.gz
 title_ratings.csv.gz
@@ -33,99 +33,95 @@ title_ratings.csv.gz
 
 #### OBJECTIVES:
 
-Previously in phase one, a set of data was gotten from the IMDB for analyzing the success of movies, but it was discovered that the dataset contained no financial information on the movies(Budget or Revenue). In order for the movies to be analyzed , additional data on the financial is required. The business stakeholder, identified The Movie Database (TMDB) as a great source of additional financial data
+The files extracted in phase one were discovered to contain no financial information on movies, such as budget and revenue. In this phase, additional data will be extracted from the TMDB open source website, which was recommended by the Stakeholder.
 
 Data SOurce: (https://www.themoviedb.org/)
 
-Data Specifications
-information on budget, revenue and MPAA rating (G/PG/PG-13/R), which is also called "Certification", should be extracted and added to the initial data.
-The stakeholder is only interested in movies with the same criteria as the ones specified in the initial IMDB ETL extracted.
+##### Specifications on additional data
+>- information on budget, revenue and MPAA rating (G/PG/PG-13/R), which is also called "Certification", should be extracted and added to the initial data.
+>- The stakeholder is only interested in movies with the same criteria as the ones specified in the initial IMDB ETL extracted.
 
 #### RESULTS:
-final_tmdb_data_2000.csv.gz
-final_tmdb_data_2001.csv.gz
-tmdb_results_combined.csv.gz
-
+Information on all the movies released between the year 2000 and the 2020 was extracted from the TMDB site. Each file is saved as an individual .csv.gz file
 
 >- ## Phase Three: TMDB EDA (Exploratory Data Analysis)
 
 #### OBJECTIVES:
 
-The Data gotten from the previously combined TMDB files in phase two would be analysed and the answer to the following questions found through exploratory data analysis.( Exclude any movies with null values and 0's for budget AND revenue from the remaining visualizations.)
-
->- How many movies had at least some valid financial information (values > 0 for budget OR revenue)?
->- How many movies are there in each of the certification categories (G/PG/PG-13/R)?
->- What is the average revenue per certification category?
->- What is the average budget per certification category?
-
-"C:\Users\heill\OneDrive\Desktop\ave budget per cert.png"
-"C:\Users\heill\OneDrive\Desktop\ave budget per cert.png"
-"C:\Users\heill\OneDrive\Desktop\ave rev per certification.png"
-"C:\Users\heill\OneDrive\Desktop\number of movies per certification.png"
-
+The files obtained in the previous phase are then joined together to form a single .csv.gz file and an exploratory data analysis was performed on it.
 
 #### RESULTS:
 
-SQL "Movies" database with the following tables:
+The answers to the following questions were obtained through the exploratory analysis.
 
-title_basics
-title_ratings
-title_genres
-genres
-tmdb_data
+>- How many movies are there in each of the certification categories (G/PG/PG-13/R)?
+>
+>![number of movies per certification](https://user-images.githubusercontent.com/95732821/175204204-e5159c36-0e83-4a21-a1de-4352a8b5902d.png)
+
+>- What is the average revenue per certification category?
+>
+>![ave rev per certification](https://user-images.githubusercontent.com/95732821/175204153-d3aeefaa-738f-4476-99d2-bffc3a6cdf27.png)
+
+>- What is the average budget per certification category?
+>
+![ave budget per cert](https://user-images.githubusercontent.com/95732821/175204124-39268929-d558-48b5-af9c-78f870617500.png)
+
 
 >- ## Phase Four: MySQL Movie DataBase ETL(Extract, Transform and Load)
 
 #### OBJECTIVES:
-This phase covers the process converting all the IMDB and TMDB files into suitable format for the database. A MySQL database would be created and all the files will be loaded into it.
+This phase covers the process converting all the IMDB and TMDB files into suitable database format. 
 
 #### RESULTS
 
-final_tmdb_data_2000.csv.gz
-...
-final_tmdb_data_2021.csv.gz
-tmdb_results_combined_final_df.csv.gz
-Phase 4 - Hypothesis Testing
+A MySQL database is created and all the files from both IMDB and TMDB were loaded into it.
+
 
 >- ## Phase Five: Hypothesis Testing
 
 #### OBJECTIVES:
-This phase covers the use of hypothesis testing and statistics knowledge on the Movies Database to give mathematically-supported answers to questions about what makes a successful movie, with a backup visualization.
+
+This phase aims at using hypothesis testing and statistics knowledge on the Movies Database to give mathematically-supported answers to questions about what makes a successful movie, with a backup visualization.
 
 Question 1:
-Does the MPAA rating of a movie affect how much revenue the movie generates?
+>- Does the MPAA rating of a movie affect how much revenue the movie generates?
 
-If so, what was the p-value of the analysis?
+>- which rating earns the most revenue?
 
-And which rating earns the most revenue?
+>- Do some movie genres earn more revenue than others?
 
-Question 2:
-Do some movie genres earn more revenue than others?
-Question 3:
-Do movies that are over 2.5 hours long earn more revenue than movies that are 1.5 hours long (or less)?
-Question 4:
-4A
- - Do movies released in 2020 earn less revenue than movies released in 2018?
-4B
-How do the years compare for movie ratings?
+>- Do movies that are over 2.5 hours long earn more revenue than movies that are 1.5 hours long (or less)?
 
+>- Do movies released in 2020 earn less revenue than movies released in 2018?
 
-"C:\Users\heill\OneDrive\Desktop\phase_5.png"
-"C:\Users\heill\OneDrive\Desktop\phase_5_certification.png"
-"C:\Users\heill\OneDrive\Desktop\phase_55.png"
-"C:\Users\heill\OneDrive\Desktop\phase_5555.png"
-"C:\Users\heill\OneDrive\Desktop\phase_555555.png"
-"C:\Users\heill\OneDrive\Desktop\555.png"
 
 #### RESULTS:
-The MPAA rating of a movie does affect how much revenue the movie generates.
-Movies that have an MPAA Rating of PG make the most revenue.
-The genre of a movie does affect how much revenue a movie generates.
-Adventure, Sci-fi, and Action movie genres, in descending order generate the greatest revenue.
-Movies that are over 2.5 hours have a significantly different revenue than movies that under 1.5 hours in length.
+
+**The MPAA rating of a movie does affect how much revenue the movie generates.**
+
+**Movies that have an MPAA Rating of PG make the most revenue.**
+
+![phase_5_certification](https://user-images.githubusercontent.com/95732821/175207470-2fd544d7-d478-4d5c-9ce1-26f898dba4d8.png)
+
+**The genre of a movie does affect how much revenue a movie generates.**
+
+**>- Adventure, Animation, Sci-fi, fantasy, Action and family movie genres generate the greatest revenue.**
+>
+![phase_5](https://user-images.githubusercontent.com/95732821/175207482-f69b4604-fa96-4948-82ad-b669a7c42438.png)
+
+**Movies that are over 2.5 hours have a significantly different revenue than movies that under 1.5 hours in length.**
+
+![phase_55](https://user-images.githubusercontent.com/95732821/175207441-325aa117-bcb1-4145-a4be-cb29d35ca05d.png)
+
+**There is a significant difference in the revenue of movies released in the year 2018 and those released in the year 2020. The revenue of movies released in 2020 is much lower than that of the year 2018, this can be attributed to the covid 19 pandemic.
+
+![phase_5555](https://user-images.githubusercontent.com/95732821/175207420-e0524641-913c-4bb2-a483-6fa01d9388be.png)
+
 
 >- ## Phase Six: Linear Regression Prediction of a Successful Movie
+
 #### OBJECTIVES:
+
 A linear regression model is to be built with all four assumptions of linear regression being put into consideration. The model is to predict the success(revenue) of a movie using the features being filtered when tuning the model to meet the four assumptions of linear regression. The four assumptions are as follows:
 
 >>- Normality: The model's residuals are approximately normally distributed.
@@ -137,17 +133,14 @@ A linear regression model is to be built with all four assumptions of linear reg
 >>- Independence of features (AKA Little-to-No Multicollinearity): That the features are not strongly related to other features.
 
 #### RESULTS:
-"C:\Users\heill\OneDrive\Desktop\snip.png"
-"C:\Users\heill\OneDrive\Desktop\snip.png"
-"C:\Users\heill\OneDrive\Desktop\lin2.png"
+
+![snip](https://user-images.githubusercontent.com/95732821/175207964-1a757506-bee3-4707-864b-69b51830cc04.png)
+
+![lin2](https://user-images.githubusercontent.com/95732821/175207927-1c77954d-4311-47e4-9b5b-8e49a6508d58.png)
+
+![lin1](https://user-images.githubusercontent.com/95732821/175207895-f5690e4e-48d3-496b-b51f-5eadcfa20ae8.png)
 
 # Summary 
-
-The MPAA rating of a movie does affect how much revenue the movie generates.
-Movies that have an MPAA Rating of PG make the most revenue.
-The genre of a movie does affect how much revenue a movie generates.
-Adventure, Sci-fi, and Action movie genres, in descending order generate the greatest revenue.
-Movies that are over 2.5 hours have a significantly different revenue than movies that under 1.5 hours in length.
 
 # Recommendations
 
